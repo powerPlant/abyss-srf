@@ -1,0 +1,17 @@
+Bootstrap: docker
+From: ubuntu:bionic
+
+%labels
+Maintainer eric.burgueno@plantandfood.co.nz
+Version 2.0.2
+
+%post
+  ## Download build prerequisites
+  apt-get update
+  apt-get -y install abyss
+  
+  ## Cleanup
+  apt-get -y clean all
+
+%runscript
+  abyss-pe "$@"
